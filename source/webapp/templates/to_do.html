@@ -8,9 +8,15 @@
 </head>
 <body>
     <h1>Task</h1>
-    <p><a href="/">На главную</a></p>
+    <p><a href="/">Home</a></p>
     <p>Description: {{ to_do.description }}</p>
     <p>Status: {{ to_do.status }}</p>
     <p>Planned due date: {{ to_do.execution_date }}</p>
+            <form action="delete/?pk={{ to_do.pk }}" method="post">
+            {% csrf_token %}
+            <div class="form_row">
+                <label for="delete">Delete task:</label>
+                <input type="submit" id="delete" name="delete">
+            </div>
 </body>
 </html>
