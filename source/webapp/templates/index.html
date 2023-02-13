@@ -9,13 +9,11 @@
 <body>
 <div class="container">
     <h1>To-Do list</h1>
-    <a href="article/add">Add task</a>
-    {% for article in articles %}
-    <h2>{{ article.description }}</h2>
-    <h2>{{ article.status }}</h2>
-    <h2>{{ article.execution_date }}</h2>
+    <a href="to_do/add">Add task</a>
+    {% for task in tasks %}
+    <h2>Task description: {{ task.description }}</h2>
     <p>
-        <a href="./article/?pk={{ article.pk }}">Подробнее..</a>
+        <a href="./to_do/?pk={{ task.pk }}">More info..</a>
     </p>
     {% endfor %}
 </div>

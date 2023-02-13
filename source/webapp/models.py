@@ -4,7 +4,7 @@ from django.db import models
 
 choices = [('new', 'Новая'), ('in_progress', 'В процессе'), ('finished', 'Сделано')]
 
-class Article(models.Model):
+class To_do(models.Model):
     description = models.CharField(max_length=200, null=False, blank=False, help_text = 'Кратко опишите задачу', verbose_name="Описание")
     status = models.CharField(max_length=20, choices=choices, default='new', help_text = 'Статус задачи', verbose_name="Статус")
     execution_date = models.CharField(max_length=10, null=True, blank=False, help_text = 'Введите в формате ГГГГ-ММ-ДД', verbose_name="Дата исполнения")
