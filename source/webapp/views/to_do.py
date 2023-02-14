@@ -10,11 +10,11 @@ def add_view(request: WSGIRequest):
         return render(request, 'to_do_create.html')
     print(request.POST)
     if request.POST.get('status') == 'new':
-        status = "New"
+        status = "new"
     elif request.POST.get('status') == 'in_progress':
-        status = "In progress"
+        status = "in_progress"
     else:
-        status = "Finished"
+        status = "finished"
 
     to_do_data = {
         'description': request.POST.get('description'),
@@ -23,7 +23,7 @@ def add_view(request: WSGIRequest):
         'created_at': request.POST.get('created_at')
     }
     to_do = To_do.objects.create(**to_do_data)
-    return redirect(f'/to_do/?pk={to_do.pk}')
+    return redirect("/", f'/to_do/?pk={to_do.pk}')
 
 def detail_view(request):
     to_do_pk = request.GET.get('pk')
@@ -32,7 +32,6 @@ def detail_view(request):
     return render(request, 'to_do.html', context=context)
 
 def delete_task(request):
-    print('to_do')
     to_do_pk = request.GET.get('pk')
     to_do = To_do.objects.get(pk=to_do_pk)
     to_do.delete()
